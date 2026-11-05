@@ -7,21 +7,24 @@ const Formulario = () => {
     const [criptomoneda, setCriptomoneda] = useState('');
     const [mostrar, setMostrar] = useState(false);
 
+    const consultarAPI = async () => {
+        const apiKey = import.meta.env.VITE_CRYPTOCOMPARE_API_KEY || '';
+        const url = "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD";
+        try {
+            // "Apikey (aqui va la variable apikey)"
+            // const config = apiKey ? { headers: { authorization: `Apikey ${apiKey}` } } : {};
+            // Llamada al API
+            const respuesta = await axios.get(`${url}&api_key=${apiKey}`);
+            console.log("Esta es la información de la api")
+            console.log(respuesta.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     useEffect(() => {
         // function consultarAPI
-        const consultarAPI = async () => {
-            const apiKey = import.meta.env.VITE_CRYPTOCOMPARE_API_KEY || '';
-            const url = "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD";
-            try {
-                // "Apikey (aqui va la variable apikey)"
-                // const config = apiKey ? { headers: { authorization: `Apikey ${apiKey}` } } : {};
-                // Llamada al API
-                const respuesta = await axios.get(`${url}&api_key=${apiKey}`);
-                console.log(respuesta.data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
+
         consultarAPI();
     }, []);
 
@@ -66,7 +69,7 @@ const Formulario = () => {
                 </select>
             </div>
 
-            <button type="submit" className="btn-cotizar">
+            <button type="submit" className="btn-cotizar" onClick={() => consultarAPI()}>
                 Cotizar
             </button>
         </form>

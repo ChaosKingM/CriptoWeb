@@ -4,7 +4,8 @@ import './styles/index.css';
 
 export default function App() {
   return (
-    <div className="contenedor-principal">
+    <div>Hola Mundo</div>
+   /*  <div className="contenedor-principal">
       <header className="app-header">
         <h1 className="header-title">Cotizador</h1>
       </header>
@@ -16,6 +17,6 @@ export default function App() {
           </div>
         </section>
       </main>
-    </div>
+    </div> */
   );
 }
