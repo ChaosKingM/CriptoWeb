@@ -1,0 +1,4 @@
+# Schreiber: las notas se fusionan conservando lo de ambos equipos
+*.md merge=union
+*.txt merge=union
+*.tsv merge=union
